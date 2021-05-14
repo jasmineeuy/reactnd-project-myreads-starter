@@ -3,9 +3,10 @@ import './App.css';
 
 class SearchPage extends Component{
 
+    
     render(){
         return(
-        <div></div>
+        <div><button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button></div>
         )
     }
 }
