@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import './App.css';
-
+import SearchPage from "./SearchPage";
 class SearchField extends Component{
 
     state={
@@ -33,8 +33,9 @@ class SearchField extends Component{
                      
                     </div>
         <div className="search-books-results">
-          <ol className="books-grid">{this.state.value}</ol>
+          <ol className="books-grid"><SearchPage book={this.props.book} findBook={this.state.value}/></ol>
         </div>
+        
       </div>
       </div>
         )
