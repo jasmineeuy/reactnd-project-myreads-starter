@@ -1,10 +1,14 @@
 import React,{Component} from 'react';
 import './App.css';
 import SearchPage from "./SearchPage";
+import {Link} from "react-router-dom";
+
+
 class SearchField extends Component{
 
     state={
-        value:""
+        value:"",
+        
     }
 
 
@@ -15,10 +19,13 @@ class SearchField extends Component{
     }
     render(){
         return(
+            
         <div> 
             <div className="search-books">
                  <div className="search-books-bar">
-                     <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
+                     <Link className='close-search' to='./'>
+                     <button className="close-search" >Close</button>
+                     </Link>
                      <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.

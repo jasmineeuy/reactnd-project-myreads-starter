@@ -4,6 +4,8 @@ import './App.css';
 class BookOption extends Component{
 
     state={
+
+      value:"none",
         
     }
 
@@ -17,7 +19,10 @@ class BookOption extends Component{
           <option value="read">Read</option>
           <option value="none">None</option>
         </select>
-      </div></div>
+      </div>
+     {/* {this.props.book.map((book) =>(<div><ol>Author{book.author}</ol><ol>category:{book.category}</ol><button onClick={()=>this.props.newCategory(book)}></button></div>))}*/}
+      
+      </div>
         )
     }
 }

@@ -16,12 +16,7 @@ class SearchPage extends Component{
         return(
         <div>
             
-        <div className ="number-result">{console.log("array",this.props)}
-            {tofindBook.length !== book.length &&(
-            <div>Now Showing {tofindBook.length} of {book.length}</div>
-            )}
-        </div>
-        <div className = "book-list">
+         <div className = "book-list">
 
             {tofindBook.map((boc)=>(
                 <div>
@@ -30,8 +25,16 @@ class SearchPage extends Component{
                 </div>
 
             ))}
-
         </div>
+       
+
+
+        <div className ="number-result">{console.log("array",this.props)}
+            {tofindBook.length !== book.length &&(
+            <div>Now Showing {tofindBook.length} of {book.length}</div>
+            )}
+        </div>
+        
         </div>
         )
     }
