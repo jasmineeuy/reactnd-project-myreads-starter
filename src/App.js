@@ -1,14 +1,11 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchField from './SearchField'
 import CurrentlyReading from './CurrentlyReading'
 
-
+//import fetchBookA from "./BooksAPI"
 import {Route} from "react-router-dom"
-
-
-
 import {Link} from "react-router-dom"
 
 /* 
@@ -20,11 +17,7 @@ const typeCategory =[{categoryShelf:"Read"},{categoryShelf:"Current"},{categoryS
 class BooksApp extends React.Component {
   state = {
 
-    books:[{title:"Hungry Caterpillar",category:"current",author:"eric carl",image:"caterpillar"},
-    {title:"Enders Game",category:"current",author:"Orson Card",image:"Robot"},
-    {title:"1776",category:"null",author:"David McCullogh",image:"flag"},
-    {title:"Horrible Harry ",category:"null",author:"Harry Name",image:"Classroom"},
-    {title:"The Hobbit",category:"null",author:"J.R.R Tolkein",image:"mountain"}],
+    books:[],
     
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -35,48 +28,67 @@ class BooksApp extends React.Component {
     
   }
 
+  componentDidMount() {
+
+    BooksAPI.getAll()
+      .then((books)=>{
+        this.setState(()=> ({
+          books,
+    }));
+  })
+}
+
+  
   updateCategory = (newCategory) => {
 
 
-    const newArray =[];
+   {/* const newArray =[];
 
     this.state.books.forEach(element => newArray.push(element));
+   
 
-    console.log("app array",newArray);
-   /* this.setState((currentCategory)=>({
+   console.log("app array",newArray);*/}
+   this.setState(
+     { books: newCategory}
 
-      books: currentCategory.books.forEach((ctg) => {
-        
-
-      })
-
-    }))*/
+   )
   }
 
   render() {
+
+    console.log("books",this.state.books)
+
+    //console.log("newbook",this.state.books)
     return (
       <div className="app">
+
+        
+    
        
         
-        
-          <div className="list-books">
+        <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
             
             <Route exact path="/" render={()=>(
               <div className="list-books-content">
-              <div>
-                
-              <CurrentlyReading book={this.state.books}/>
+                <div>
+                  {typeCategory.map(category=>(
+                    <CurrentlyReading 
+                      key={category.categoryShelf}
+                      category={category}
+                      book={this.state.books}
+                    />
+                  ))}
                { /*<CurrentlyReading/>
                 <WannaRead/>
                 <Read/>*/
                }
+                </div>
               </div>
-            </div>
             )}/>
-            {/*<Route exact path="/search" render={()=>( <SearchField book={this.state.books}/>)}/>*/}
+            <Route exact path="/search" render={()=>( <SearchField book={this.state.books}/>)}/>
             
             <div className="open-search">
              
@@ -86,7 +98,8 @@ class BooksApp extends React.Component {
             </div>
           </div>
          
-         {/* <BookOption book={this.state.books} newCategory={this.updateCategory}/>*/}
+         {/* <BookOption book={this.state.books} newCategory={this.updateCategory}/>*/} 
+        
       </div>
     )
   }
