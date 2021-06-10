@@ -13,7 +13,7 @@ import {Link} from "react-router-dom"
   -Current-Currently Reading
   -Want-Want to read-
 */
-const typeCategory =[{categoryShelf:"Read"},{categoryShelf:"Current"},{categoryShelf:"Want"}]
+const typeCategory =[{categoryShelf:"currentlyReading"},{categoryShelf:"wantToRead"},{categoryShelf:"read"}]
 class BooksApp extends React.Component {
   state = {
 

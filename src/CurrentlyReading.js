@@ -9,7 +9,7 @@ class CurrentlyReading extends Component{
 
   state={
     newArray:[],
-   value:"",
+    value:"",
 
   }
 
@@ -62,7 +62,6 @@ class CurrentlyReading extends Component{
           <ol className="books-grid">
 
 
-
            
 
             {this.props.book.map(book =>(
@@ -70,7 +69,7 @@ class CurrentlyReading extends Component{
 
               
             
-                (book.shelf === "currentlyReading") ?
+                (book.shelf === this.props.category.categoryShelf) ?
                 <div key={book.id}>
                   <li>
                     <div className="book">
@@ -83,7 +82,7 @@ class CurrentlyReading extends Component{
                       </div>
                       <div className="book-title">{book.title}</div>
                       {/*<button onClick={console.log(this.updatedArray())}>click</button>*/}
-                      <div className="book-authors">{book.author}</div> 
+                      <div className="book-authors">{book.authors}</div> 
                     
                     </div>
                   </li>

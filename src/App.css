@@ -196,3 +196,14 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+.book-list{
+  display:flex;
+  padding:10px;
+}
+
+.result{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
