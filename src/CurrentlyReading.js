@@ -2,14 +2,16 @@ import React,{Component} from 'react';
 //import BooksApp from './App';
 import './App.css';
 import BookOption from './BookOption';
-import update from 'immutability-helper';
-
+//import update from 'immutability-helper';
+import * as BooksAPI from './BooksAPI'
 class CurrentlyReading extends Component{
 
 
   state={
     newArray:[],
     value:"",
+    newItem:"",
+  
 
   }
 
@@ -19,27 +21,34 @@ class CurrentlyReading extends Component{
    
     this.setState({value:newdata});
    // console.log("newdata currently file"+ newdata);
-   console.log("new"+newdata);
-   console.log("title"+newtitle);
+   console.log("new categroy "+newdata);
+   console.log("title "+newtitle);
   
    const newArr = [];
-   const newUpdate=this.props.book.slice();
-   const update0 =[];
+   const newUpdate=this.props.book;
+  
     //{console.log("newOption",newOption)}
     //{console.log("name",name)}
   
     this.props.book.forEach((element)=>{
      
-     //{category:{$apply:function(x){return x+"no"}}}
-      (element.title === newtitle) ? (update0.push( update(newUpdate,{0:{category:{$splice:["newwor"]}}}))) : newArr.push(element)
+     
+      /*(element.title === newtitle) ? (console.log(element.shelf))
+   : newArr.push(element)
+
+       }*/
+       const newshelf = this.state.value;
+        (element.title === newtitle) ?  BooksAPI.update(element.id,element.shelf=newdata)
+      .then( newArr.push(element),console.log(element) )
+  : newArr.push(element)
 
        }
        
     )
    // return newArr
- //console.log(newArr)
+ return newArr
  
- console.log(update0)
+
   
   }
 
@@ -48,6 +57,9 @@ class CurrentlyReading extends Component{
 
     render(){
 
+      console.log("itemreturn "+ JSON.stringify(this.state.newItem))
+      
+     console.log("value",this.state.value);
       {/*console.log("props",this.props)
         console.log("value",this.state.value)*/}
       

@@ -33,7 +33,7 @@ class BookOption extends Component{
 
 
     render(){
-      console.log("onchange " +this.state.value +" "+this.props.title);
+      //console.log("onchange " +this.state.value +" "+this.props.title);
        //console.log("option props",this.props)
       // console.log("newvalue from CR",this.props.value0)
         return(

@@ -52,6 +52,7 @@ class BooksApp extends React.Component {
      { books: newCategory}
 
    )
+   console.log(this.state.books)
   }
 
   render() {
